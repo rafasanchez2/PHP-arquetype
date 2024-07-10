@@ -1,58 +1,59 @@
 {
-    "name": "okta/samples-php",
-    "description": "PHP Sample Applications for Okta",
-    "license": "Apache-2.0",
-    "authors": [
-        {
-            "name": "Okta Developers",
-            "email": "developers@okta.com"
-        }
-    ],
-    "require": {
-        "php": "^7.0"
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "npm install",
-            "echo \"Installing Custom Login Dependencies\" && cd custom-login && composer install",
-            "echo \"Installing Okta Hosted Login Dependencies\" && cd okta-hosted-login && composer install",
-            "echo \"Installing Resource Server Dependencies\" && cd resource-server && composer install"
-        ],
-        "post-update-cmd": [
-            "npm update",
-            "echo \"Updating Custom Login Dependencies\" && cd custom-login && composer update",
-            "echo \"Updating Okta Hosted Login Dependencies\" && cd okta-hosted-login && composer update",
-            "echo \"Updating Resource Server Dependencies\" && cd resource-server && composer update"
-        ],
-        "test": [
-            "composer test:e2e",
-            "composer test:resource-server"
-        ],
-        "test:e2e": [
-            "composer setup-env",
-            "composer test:custom-login",
-            "composer test:okta-hosted-login"
-        ],
-        "test:custom-login": [
-            "composer setup-env",
-            "npm run pretest && npm run test:custom-login"
-        ],
-        "test:okta-hosted-login": [
-            "composer setup-env",
-            "npm run pretest && npm run test:okta-hosted-login"
-        ],
-        "test:resource-server": [
-            "composer setup-env",
-            "npm run pretest && npm run test:resource-server"
-        ],
-        "sample:custom-login": "php -S 127.0.0.1:8080 -t ./custom-login ./custom-login/index.php",
-        "sample:okta-hosted-login": "php -S 127.0.0.1:8080 -t ./okta-hosted-login ./okta-hosted-login/index.php",
-        "sample:resource-server": "php -S 127.0.0.1:8000 -t ./resource-server ./resource-server/index.php",
-        "setup-env": "npm run setup-env",
-        "post-autoload-dump": [
-          "echo \"Dumping Custom Login Autoload\" && cd custom-login && composer dump-autoload",
-          "echo \"Dumping Okta Hosted Login Autoload\" && cd okta-hosted-login && composer dump-autoload",
-          "echo \"Dumping Resource Server Autoload\" && cd resource-server && composer dump-autoload"
-        ]
+  "name": "okta/samples-php",
+  "description": "PHP Sample Applications for Okta",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "Okta Developers",
+      "email": "developers@okta.com"
     }
+  ],
+  "require": {
+    "php": "^8.0",
+    "nikic/fast-route": "^1.3",
+    "twig/twig": "^3.2",
+    "vlucas/phpdotenv": "^5.2",
+    "okta/jwt-verifier": "^1.0",
+    "guzzlehttp/psr7": "^1.7",
+    "spomky-labs/jose": "^7.0",
+    "firebase/php-jwt": "^5.2",
+    "http-interop/http-factory-guzzle": "^1.0",
+    "monolog/monolog": "^3.6",
+    "guzzlehttp/guzzle": "^7.4"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "npm install",
+      "echo \"Installing Okta Hosted Login Dependencies\" && cd src && composer install",
+      "echo \"Installing Resource Server Dependencies\" && cd resource-server && composer install"
+    ],
+    "post-update-cmd": [
+      "npm update",
+      "echo \"Updating Okta Hosted Login Dependencies\" && cd src && composer update",
+      "echo \"Updating Resource Server Dependencies\" && cd resource-server && composer update"
+    ],
+    "test": [
+      "composer test:e2e",
+      "composer test:resource-server"
+    ],
+    "test:e2e": [
+      "composer setup-env",
+      "composer test:okta-hosted-login"
+    ],
+    "test:okta-hosted-login": [
+      "composer setup-env",
+      "npm run pretest && npm run test:okta-hosted-login"
+    ],
+    "test:resource-server": [
+      "composer setup-env",
+      "npm run pretest && npm run test:resource-server"
+    ],
+    "sample:okta-hosted-login": "php -S 127.0.0.1:8080 -t ./src ./src/index.php",
+    "sample:resource-server": "php -S 127.0.0.1:8000 -t ./resource-server ./resource-server/index.php",
+    "setup-env": "npm run setup-env",
+    "post-autoload-dump": [
+      "echo \"Dumping Okta Hosted Login Autoload\" && cd src && composer dump-autoload",
+      "echo \"Dumping Resource Server Autoload\" && cd resource-server && composer dump-autoload"
+    ]
+  }
 }

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar Tablas</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+ <style>
+            ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px;
+        }
+        li {
+            background-color: #ffffff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        li:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        li:hover {
+            background-color: #d9edf7;
+        }
+         h2 {
+            background-color: #f2f2f2;
+            color: #000000;
+            padding: 10px;
+            margin: 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+   <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li><a href="/">Inicio</a></li>
+            {% if authenticated == true %}
+            <li><a id="profile-button" href="/profile">Mi Perfil</a></li>
+            <li><a href="/show-tables">MYSQL</a></li>
+            <li><a href="/show-tables-postgres">PostgreSQL</a></li>
+            <li><a href="/form">Formulario</a></li> 
+            <li><a href="/solicitudes">LLamadas</a></li>
+            {% endif %}
+        </ul>
+        {% if authenticated == true %}
+        <form method="post" action="/logout" class="navbar-form navbar-right">
+            <button id="logout-button" type="submit" class="btn btn-danger">Cerrar Sesión</button>
+        </form>
+        {% endif %}
+    </div>
+</nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2 class="text-center">Tablas</h2>
+                <ul class="list-group">
+                    {% for table in tables %}
+                        <li class="list-group-item"><a href="/show-records/{{ table }}">{{ table }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <title>Inicio</title>
+    <style>
+            ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px;
+        }
+        li {
+            background-color: #ffffff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        li:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        li:hover {
+            background-color: #d9edf7;
+        }
+           h2 {
+            background-color: #f2f2f2;
+            color: #000000;
+            padding: 10px;
+            margin: 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body id="samples">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li><a href="/">Inicio</a></li>
+            {% if authenticated == true %}
+            <li><a id="profile-button" href="/profile">Mi Perfil</a></li>
+            <li><a href="/show-tables">MYSQL</a></li>
+            <li><a href="/show-tables-postgres">PostgreSQL</a></li>
+            <li><a href="/form">Formulario</a></li> 
+            <li><a href="/solicitudes">LLamadas</a></li>
+            {% endif %}
+        </ul>
+        {% if authenticated == true %}
+        <form method="post" action="/logout" class="navbar-form navbar-right">
+            <button id="logout-button" type="submit" class="btn btn-danger">Cerrar Sesión</button>
+        </form>
+        {% endif %}
+    </div>
+</nav>
+
+<div id="content" class="container">
+    <h2>Demo Evolutivo PHP</h2>
+
+    {% if authenticated == true %}
+    <div class="text container">
+        <p>Bienvenido, <span>{{ profile.sub }}</span>!</p>
+        <p>Te has logueado correctamente contra Okta org, y has sido redirigido de vuelta a la aplicación.</p>
+    </div>
+    {% else %}
+    <div>
+        <p>App demo para el evolutivo PHP, cuenta con un login contra Okta y gestión del token de sesión.</p>
+        <p>También nos proporciona conexión a bases de datos MYSQL y PostgreSQL, llamadas HTTP y API REST con manejo de logs y excepciones, configuración de ficheros
+        properties y validación de formularios.</p>
+    </div>
+
+    <form method="get" action="login">
+        <button id="login-button" class="btn btn-primary" type="submit">Login</button>
+    </form>
+    {% endif %}
+</div>
+</body>
+</html>

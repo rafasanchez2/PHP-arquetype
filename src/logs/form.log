@@ -1,0 +1,8 @@
+[2024-06-12T08:14:41.166482+00:00] form.INFO: Formulario enviado {"nombre":"Rafa","email":"rafasanes97@gmail.com"} []
+[2024-06-12T08:16:32.404383+00:00] form.INFO: Formulario enviado {"nombre":"Rafa","email":"rafasanes97@gmail.com"} []
+[2024-06-12T08:16:59.209538+00:00] form.INFO: Formulario enviado {"nombre":"Rafa","email":"fasasasasasf@gmail.com"} []
+[2024-06-12T09:38:44.426912+00:00] form.INFO: Formulario enviado {"nombre":"ASASS","email":"ff@gmail.com"} []
+[2024-06-12T10:07:26.144293+00:00] form.ERROR: Error al procesar el formulario {"errores":["Las contraseñas no coinciden.","La contraseña debe contener al menos una mayúscula."]} []
+[2024-06-12T10:07:43.709530+00:00] form.INFO: Formulario enviado {"nombre":"Asafdsfdsf","email":"dsfdsfdsfdsfsdff@gmail.com"} []
+[2024-06-12T10:08:00.998174+00:00] form.INFO: Formulario enviado {"nombre":"Asafdsfdsf","email":"dsfdsfdsfdsfsdff@gmail.com"} []
+[2024-06-12T10:20:12.761666+00:00] form.INFO: Formulario enviado {"nombre":"Manolo","email":"fadaf@gmail.com"} []
