@@ -26,6 +26,13 @@
     "test": "cd ../ && if [[ -f testenv ]]; then source testenv; fi && npm run test:okta-hosted-login"
   },
   "autoload": {
+    "psr-4": {
+      "ArquetipoPHP\\Formularios\\": "src/Formularios/",
+      "ArquetipoPHP\\Http\\": "src/Http/",
+      "ArquetipoPHP\\OktaAuth\\": "src/OktaAuth/",
+      "ArquetipoPHP\\Database\\": "src/Database/"
+
+    },
     "files": [
       "functions.php"
     ]

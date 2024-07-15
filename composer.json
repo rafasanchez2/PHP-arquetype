@@ -21,6 +21,15 @@
     "monolog/monolog": "^3.6",
     "guzzlehttp/guzzle": "^7.4"
   },
+  "autoload": {
+    "psr-4": {
+      "ArquetipoPHP\\Formularios\\": "src/Formularios/",
+      "ArquetipoPHP\\Http\\": "src/Http/",
+      "ArquetipoPHP\\OktaAuth\\": "src/OktaAuth/",
+      "ArquetipoPHP\\Database\\": "src/Database/"
+
+    }
+  },
   "scripts": {
     "post-install-cmd": [
       "npm install",
